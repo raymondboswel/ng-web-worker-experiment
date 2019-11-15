@@ -8,7 +8,10 @@ import { TringService } from "./tring.service";
 })
 export class AppComponent {
   title = "ng-web-worker-experiment";
-  constructor(public tringService: TringService) {}
+  message;
+  constructor(public tringService: TringService) {
+    this.tringService.message$.subscribe(m => (this.message = m));
+  }
 
   initTringWrapper() {
     this.tringService.initWrapper();
